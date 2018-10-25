@@ -5,18 +5,28 @@ import {EIObjectType} from "../constant/EIObjectType";
 
 export abstract class EIObject {
 
-  private _name: string = EIObject.name;
+  private _typeOfPage: string = EIObject.name;
   private listOfEIObjects: Array<EIObject> = [];
+  private _name: string;
 
-  constructor(private navCtrl: NavController) {
-    //this._name = name;
+  constructor(private navCtrl: NavController, name: string) {
+
+    this._name = name;
   }
 
+
+  get typeOfPage(): string {
+    return this._typeOfPage;
+  }
+
+
+  set typeOfPage(value: string) {
+    this._typeOfPage = value;
+  }
 
   get name(): string {
     return this._name;
   }
-
 
   set name(value: string) {
     this._name = value;
@@ -36,7 +46,7 @@ export abstract class EIObject {
 
   renameEIObject(index: number, newName: string) {
 
-    this.listOfEIObjects[index].name = newName;
+    this.listOfEIObjects[index].typeOfPage = newName;
   }
 
   createEIObject() {

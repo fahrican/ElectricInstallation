@@ -21,7 +21,7 @@ export class CreateEIObjectPage {
 
   private typeEIObject: string = "";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private navCtrl: NavController, private navParams: NavParams) {
 
     this.typeEIObject = navParams.get("eIObjectType");
   }

@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {EIObject} from "../../model/EIObject";
 
 /**
- * Generated class for the ProjectPage page.
+ * Generated class for the RoomPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,10 +11,10 @@ import {EIObject} from "../../model/EIObject";
 
 @IonicPage()
 @Component({
-  selector: 'page-project',
-  templateUrl: 'project.html',
+  selector: 'page-room',
+  templateUrl: 'room.html',
 })
-export class ProjectPage extends EIObject{
+export class RoomPage extends EIObject {
 
 
   constructor(navCtrl: NavController, name: string) {
@@ -22,7 +22,7 @@ export class ProjectPage extends EIObject{
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProjectPage');
+    console.log('ionViewDidLoad RoomPage');
   }
 
 }
