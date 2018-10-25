@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, AlertController, NavController, NavParams } from 'ionic-angular';
 import {EIObject} from "../../model/EIObject";
+import {EIObjectFactory} from "../../factory/EIObjectFactory";
 
 /**
  * Generated class for the CreateEIObjectPage page.
@@ -21,7 +22,8 @@ export class CreateEIObjectPage {
 
   private typeEIObject: string = "";
 
-  constructor(private navCtrl: NavController, private navParams: NavParams) {
+  constructor(private navCtrl: NavController, private navParams: NavParams,
+              private alertController: AlertController) {
 
     this.typeEIObject = navParams.get("eIObjectType");
   }
@@ -33,6 +35,44 @@ export class CreateEIObjectPage {
   private clearUserInput(){
 
     this.eIObjectPageName.value = "";
+  }
+
+  private generateEIObjectPage(): EIObject {
+
+    this.name = this.eIObjectPageName.value;
+    let factory = new EIObjectFactory(this.navCtrl);
+
+    return factory.getEIObject(this.typeEIObject, this.name);
+  }
+
+  private presentEmptyAlert() {
+
+    let alert = this.alertController.create({
+      title: 'Field is empty!',
+      subTitle: 'Name field needs a input!!!',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  saveExpenseModel() {
+
+    if (this.eIObjectPageName.value === "") {
+      this.presentEmptyAlert();
+    }
+    else {
+
+      let newEIObject = this.generateEIObjectPage();
+      this.anyExpenseList.push(foodPage);
+
+      this.storage.set(this.storageKeyForSpecificPage, JSON.stringify(this.anyExpenseList));
+
+      //clear keys so we set it for another page
+      this.storage.set(StorageKeys.CURRENT_PAGE, "");
+      this.storageKeyForSpecificPage = "";
+
+      this.navCtrl.setRoot(HomePage);
+    }
   }
 
 }

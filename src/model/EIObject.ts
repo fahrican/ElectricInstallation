@@ -1,6 +1,7 @@
 import {NavController} from 'ionic-angular';
 import {CreateEIObjectPage} from "../pages/create-e-i-object/create-e-i-object";
 import {EIObjectType} from "../constant/EIObjectType";
+import {ProjectPage} from "../pages/project/project";
 
 
 export abstract class EIObject {
@@ -51,11 +52,19 @@ export abstract class EIObject {
 
   createEIObject() {
     this.navCtrl.push(CreateEIObjectPage, {
-      eIObjectType: EIObjectType.PROJECT
+      eIObjectType: this.giveRightEIObjectType()
     });
   }
 
   gotoChild() {
 
+  }
+
+  private giveRightEIObjectType(): string{
+
+    if (this._typeOfPage === ProjectPage.name){
+      return EIObjectType.FLOOR;
+    }
+    return EIObjectType.ROOM;
   }
 }
