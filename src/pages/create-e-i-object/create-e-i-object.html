@@ -7,12 +7,22 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>create new</ion-title>
+    <ion-title>create new {{this.typeEIObject}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+    <ion-item>
+      <ion-label>{{this.typeEIObject}} name:</ion-label>
+      <ion-input type="text" required #eIObjectPageName [(ngModel)]="name"></ion-input>
+    </ion-item>
+
+  <br />
+
+  <button ion-button color="danger" type="reset" (click)="clearUserInput()">Delete</button>
+  <button ion-button id="saveButton" color="secondary" id="saveButton" (click)="saveUserInput()">Save</button>
 
 </ion-content>

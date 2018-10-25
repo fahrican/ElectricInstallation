@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {EIObject} from "../../model/EIObject";
 
 /**
  * Generated class for the CreateEIObjectPage page.
@@ -15,11 +16,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CreateEIObjectPage {
 
+  @ViewChild('eIObjectPageName') eIObjectPageName;
+  private name = "";
+
+  private typeEIObject: string = "";
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    this.typeEIObject = navParams.get("eIObjectType");
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreateEIObjectPage');
+  }
+
+  private clearUserInput(){
+
+    this.eIObjectPageName.value = "";
   }
 
 }

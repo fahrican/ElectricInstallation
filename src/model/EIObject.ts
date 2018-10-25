@@ -1,5 +1,6 @@
 import {NavController} from 'ionic-angular';
 import {CreateEIObjectPage} from "../pages/create-e-i-object/create-e-i-object";
+import {EIObjectType} from "../constant/EIObjectType";
 
 
 export abstract class EIObject {
@@ -39,7 +40,9 @@ export abstract class EIObject {
   }
 
   createEIObject() {
-    this.navCtrl.setRoot(CreateEIObjectPage);
+    this.navCtrl.push(CreateEIObjectPage, {
+      eIObjectType: EIObjectType.PROJECT
+    });
   }
 
   gotoChild() {

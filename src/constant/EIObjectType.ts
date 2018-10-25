@@ -1,4 +1,4 @@
-enum EIObjectType {
+export enum EIObjectType {
 
   HOME = "home",
   PROJECT = "project",
