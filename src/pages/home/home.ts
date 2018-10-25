@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {EIObject} from "../../model/EIObject";
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage extends EIObject {
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(navCtrl: NavController) {
+    super(navCtrl);
   }
-
 }

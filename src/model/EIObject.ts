@@ -1,10 +1,14 @@
-abstract class EIObject {
+import {NavController} from 'ionic-angular';
+import {CreateEIObjectPage} from "../pages/create-e-i-object/create-e-i-object";
 
-  private _name: string;
+
+export abstract class EIObject {
+
+  private _name: string = EIObject.name;
   private listOfEIObjects: Array<EIObject> = [];
 
-  constructor(name: string) {
-    this._name = name;
+  constructor(private navCtrl: NavController) {
+    //this._name = name;
   }
 
 
@@ -17,28 +21,28 @@ abstract class EIObject {
     this._name = value;
   }
 
-  private showCircuitPlan(anyObject: any){
+  showCircuitPlan(anyObject: any) {
 
     for (var key in anyObject) {
       console.log(key, anyObject[key]);
     }
   }
 
-  private deleteEIObject(index: number){
+  deleteEIObject(index: number) {
 
     this.listOfEIObjects.splice(index);
   }
 
-  private renameEIObject(index: number, newName: string){
+  renameEIObject(index: number, newName: string) {
 
     this.listOfEIObjects[index].name = newName;
   }
 
-  private createEIObject(){
-
+  createEIObject() {
+    this.navCtrl.setRoot(CreateEIObjectPage);
   }
 
-  private gotoChild(){
+  gotoChild() {
 
   }
 }
