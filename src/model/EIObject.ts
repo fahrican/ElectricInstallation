@@ -33,4 +33,12 @@ abstract class EIObject {
 
     this.listOfEIObjects[index].name = newName;
   }
+
+  private createEIObject(){
+
+  }
+
+  private gotoChild(){
+
+  }
 }
